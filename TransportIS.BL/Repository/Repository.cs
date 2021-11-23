@@ -7,20 +7,25 @@ using System.Text;
 using System.Threading.Tasks;
 using TransportIS.DAL.Entities.Interfaces;
 using TransportIS.BL.Repository.Interfaces;
+using TransportIS.DAL;
 
-
-namespace TransportIS.DAL.Repository
+namespace TransportIS.BL.Repository
 {
-    public partial class Repository<TEntity> : IRepository<TEntity>
+    public class Repository<TEntity> : IRepository<TEntity>
     where TEntity : class, IEntity
     {
+        protected TransportISDbContext DbContext { get; }
+
         protected DbSet<TEntity> dbSet;
+
 
         public Repository(Func<TransportISDbContext> contextProvider)
         {
-            dbSet = contextProvider().Set<TEntity>();
+            DbContext = contextProvider();
+            dbSet = DbContext.Set<TEntity>();
         }
-        public virtual IQueryable<TEntity> GetQueryable()
+
+        public IQueryable<TEntity> GetQueryable()
         {
             return dbSet;
         }
@@ -31,19 +36,21 @@ namespace TransportIS.DAL.Repository
             return dbSet.FirstOrDefault(entity => entity.Id == id);
         }
 
-        /*
+        
         public virtual TEntity Insert(TEntity entity)
         {
             entity.Id = dbSet.Add(entity).Entity.Id;
+            DbContext.SaveChanges();
             return entity;
         }
 
         public virtual TEntity Update(TEntity entity)
         {
             entity.Id = dbSet.Update(entity).Entity.Id;
+            DbContext.SaveChanges();
             return entity;
         }
-        */
+        
 
         public void Delete(Guid id)
         {
@@ -51,6 +58,7 @@ namespace TransportIS.DAL.Repository
             if (entity != null)
             {
                 dbSet.Remove(entity);
+                DbContext.SaveChanges();
             }
         }
 

@@ -11,13 +11,5 @@ namespace TransportIS.BL.Models.DetailModels
         public Guid Id { get; set; }
 
         public string? CarrierName { get; set;}
-
-        public AddressListModel Address { get; set; } = new AddressListModel();
-
-        public string? TelephoneNumber { get; set; }
-
-        public string? PublicRelationsContact { get; set; }
-
-        public ICollection<ConnectionListModel> Connections { get; set; } = new List<ConnectionListModel>();
     }
 }

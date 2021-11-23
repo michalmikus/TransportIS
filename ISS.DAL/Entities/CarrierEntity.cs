@@ -24,5 +24,7 @@ namespace TransportIS.DAL
 
         public ICollection<EmploeeEntity> Emploees { get; set; } = new List<EmploeeEntity>();
 
+        public ICollection<VehicleEntity> Vehicles { get; set; } = new List<VehicleEntity>();
+
     }
 }

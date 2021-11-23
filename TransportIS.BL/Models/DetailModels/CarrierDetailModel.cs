@@ -12,7 +12,7 @@ namespace TransportIS.BL.Models.DetailModels
 
         public string? CarrierName { get; set;}
 
-        public string? Address { get; set;}
+        public AddressDetailModel Address { get; set;}
 
         public string? TaxNumber { get; set; }
 
@@ -20,8 +20,5 @@ namespace TransportIS.BL.Models.DetailModels
 
         public string? PublicRelationsContact { get; set; }
 
-        public ICollection<ConnectionListModel> Connections { get; set; } = new List<ConnectionListModel>();
-
-        public ICollection<EmploeeDetailModel> Emploees { get; set; } = new List<EmploeeDetailModel>();
     }
 }

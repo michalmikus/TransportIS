@@ -2,13 +2,11 @@
 
 namespace TransportIS.BL.Models.DetailModels
 {
-    public class ConnectionDetailModel
+    public class ConnectionDetialModel
     {
         public Guid Id { get; set; }
 
         public string? Name { get; set; }
-
-        public string? Description { get; set; }
 
         public int? ReservedSeats { get; set; }
 

@@ -18,7 +18,7 @@ namespace TransportIS.DAL.Entities
         public int? ReservedSeats { get; set; }
 
 
-        [ForeignKey(nameof(CarrierId))]
+        [ForeignKey(nameof(VehicleId))]
         public VehicleEntity? Vehicle { get; set; }
         public Guid? VehicleId { get; set; }
 

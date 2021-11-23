@@ -12,11 +12,12 @@ namespace TransportIS.BL.Repository.Interfaces
     {
         public IQueryable<TEntity> GetQueryable();
 
-        /*
-        public TEntity? GetById(Guid id);
+        
+        public TEntity? GetEntityById(Guid id);
+        
         public TEntity Insert(TEntity entity);
+        
         public TEntity Update(TEntity entity);
-        */
 
         public void Delete(Guid id);
     }

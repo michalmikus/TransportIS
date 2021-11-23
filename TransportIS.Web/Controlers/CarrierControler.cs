@@ -10,43 +10,43 @@ using TransportIS.DAL;
 
 namespace TransportIS.Web.Controlers
 {
-    [Route("api/carrier/{carrierId}/connections")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class ConnectionControler : ControllerBase
+    public class CarrierControler : ControllerBase
     {
         private readonly IRepository<CarrierEntity> repository;
         private readonly IMapper mapper;
 
-        public ConnectionControler(IRepository<CarrierEntity> repository, IMapper mapper)
+        public CarrierControler(IRepository<CarrierEntity> repository, IMapper mapper)
         {
             this.repository = repository;
             this.mapper = mapper;
         }
         // GET: api/<ConnectionControler>
         [HttpGet]
-        public IList<ConnectionListModel> Get()
+        public IList<CarrierListModel> Get()
         {
            var query = repository.GetQueryable();
 
-            var projection = mapper.ProjectTo<ConnectionListModel>(query);
+            var projection = mapper.ProjectTo<CarrierListModel>(query);
 
             return projection.ToList();
         }
 
         // GET api/<ConnectionControler>/5
         [HttpGet("{id}")]
-        public ConnectionDetialModel Get(Guid id)
+        public CarrierDetailModel Get(Guid id)
         {
             var entity = repository.GetEntityById(id);
-            return mapper.Map<ConnectionDetialModel>(entity);
+            return mapper.Map<CarrierDetailModel>(entity);
         }
 
         // POST api/<ConnectionControler>
         [HttpPost]
-        public ConnectionDetialModel Post([FromBody] ConnectionDetialModel model)
+        public CarrierDetailModel Post([FromBody] CarrierDetailModel model)
         {
-           var result =  repository.Insert(mapper.Map<ConnectionEntity>(model));
-            return mapper.Map<ConnectionDetialModel>(result);
+           var result =  repository.Insert(mapper.Map<CarrierEntity>(model));
+            return mapper.Map<CarrierDetailModel>(result);
         }
 
         // PUT api/<ConnectionControler>/5

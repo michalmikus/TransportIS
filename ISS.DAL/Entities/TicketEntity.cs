@@ -34,9 +34,6 @@ namespace TransportIS.DAL.Entities
         [ForeignKey(nameof(DestinationStopId))]
         public StopEntity? DestinationStop { get; set; }
         public Guid? DestinationStopId { get; set; }
-
-
-        public int? NumberOfReservedSeats { get; set; }
         
         public PassengerType Type { get; set; }
 
